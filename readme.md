@@ -1,6 +1,6 @@
 Cowgirl
 =======
-Cowgirl is a Lua object filtration module written with the LÖVE framework in mind. This module will take a list of Lua objects and sort through them, removing any items do not match the given criteria.
+Cowgirl is a Lua object filtration module written with the LÖVE framework in mind. This module will take a list of Lua objects and sort through them, removing any items that do not match the given criteria.
 
 ## Filters ##
 Cowgirl sorts items using functions called filters. A filter receives, in order, the Cowgirl object, the object being processed, the name of the filter, and the value to compare the object with. If the object passes the filter, the filter should return **true**. Otherwise, it should return **false**.
