@@ -1,7 +1,7 @@
-local cowgirl = {}
+local wrangler = {}
 
-function cowgirl.new()
-  local c = setmetatable({}, cowgirl)
+function wrangler.new()
+  local c = setmetatable({}, wrangler)
   c.filters = {
     "not" = function(self, object, criterion, criteria)
       for criterion, value in pairs(criteria) do
@@ -24,7 +24,7 @@ function cowgirl.new()
   return c
 end
 
-function cowgirl:filter(list, criteria)
+function wrangler:filter(list, criteria)
   for index, object in ipairs(list) do
     for criterion, value in pairs(criteria) do
       assert(self.filters[criterion], "No such filter (" .. criterion .. ")")
@@ -37,13 +37,13 @@ function cowgirl:filter(list, criteria)
   return list
 end
 
-function cowgirl:addFilter(name, filter)
+function wrangler:addFilter(name, filter)
   assert(type(filter) == "function", "bad argument #2 to 'addFilter' (function expected, got " .. type(filter) .. ")")
   self.filters[name] = filter
 end
 
-function cowgirl:removeFilter(name)
+function wrangler:removeFilter(name)
   self.filters[name] = nil
 end
 
-return setmetatable(cowgirl, { __call = cowgirl.new })
+return setmetatable(wrangler, { __call = wrangler.new })
